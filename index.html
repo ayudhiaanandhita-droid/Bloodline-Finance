@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloodline Finance - Multi-Page Ultimate</title>
+    <title>Bloodline Finance - Ultimate</title>
     <!-- Google Fonts & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,8 +14,6 @@
         :root {
             --bg-main: #120508;
             --bg-card: #1c0a10;
-            --bg-card-hover: #29101a;
-            --primary-maroon: #800020;
             --accent-crimson: #d62828;
             --accent-glow: #ff3b5c;
             --maroon-gradient: linear-gradient(135deg, #a80f2e 0%, #4a0011 100%);
@@ -39,82 +37,71 @@
             background-color: var(--bg-main);
             color: var(--text-white);
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
         /* Navigasi Header */
-        navbar {
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 6%;
-            background: rgba(18, 5, 8, 0.9);
+            padding: 18px 5%;
+            background: rgba(18, 5, 8, 0.95);
             backdrop-filter: blur(12px);
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 100;
+            z-index: 1000;
             border-bottom: 1px solid var(--glass-border);
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--text-white);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .logo i {
-            color: var(--accent-glow);
-        }
+        .logo i { color: var(--accent-glow); }
 
         .nav-links {
             display: flex;
-            gap: 10px;
-            overflow-x: auto;
+            gap: 8px;
         }
 
         .nav-btn {
             background: transparent;
             border: 1px solid var(--glass-border);
             color: var(--text-white);
-            padding: 7px 16px;
+            padding: 7px 14px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
+            font-size: 12px;
+            transition: all 0.2s ease;
         }
 
         .nav-btn:hover, .nav-btn.active {
             background: var(--maroon-gradient);
             border-color: var(--accent-crimson);
-            box-shadow: 0 0 12px rgba(214, 40, 40, 0.4);
+            box-shadow: 0 0 10px rgba(214, 40, 40, 0.4);
         }
 
         /* Container Halaman */
-        .page {
+        .page-section {
             display: none;
             padding-top: 90px;
-            padding-bottom: 50px;
+            padding-bottom: 40px;
             min-height: 100vh;
-            animation: fadeIn 0.4s ease-in-out forwards;
         }
 
-        .page.active-page {
+        .page-section.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .container {
-            max-width: 1150px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -122,20 +109,20 @@
         .card {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            padding: 22px;
+            border-radius: 16px;
+            padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             margin-bottom: 20px;
         }
 
-        /* --- HALAMAN 1: HOME LANDING PAGE --- */
+        /* Halaman 1: Home */
         .hero-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 60px 20px 30px 20px;
-            max-width: 850px;
+            padding: 50px 20px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -143,19 +130,19 @@
             background: rgba(214, 40, 40, 0.15);
             border: 1px solid var(--accent-crimson);
             color: var(--accent-glow);
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             margin-bottom: 20px;
             text-transform: uppercase;
         }
 
         .hero-title {
-            font-size: 46px;
+            font-size: 40px;
             font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
         .hero-title span {
@@ -164,92 +151,74 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-subtitle {
-            font-size: 16px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
         .quote-box {
             background: var(--bg-card);
             border-left: 4px solid var(--accent-glow);
-            padding: 16px 20px;
-            border-radius: 12px;
-            margin: 20px 0 35px 0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 20px 0 30px 0;
             font-style: italic;
             color: #e0d0d6;
-            font-size: 14px;
-            max-width: 650px;
+            font-size: 13px;
         }
 
         .cta-btn {
             background: var(--maroon-gradient);
             color: white;
             border: 1px solid var(--accent-crimson);
-            padding: 14px 32px;
-            font-size: 15px;
+            padding: 12px 30px;
+            font-size: 14px;
             font-weight: 700;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(168, 15, 46, 0.5);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            box-shadow: 0 8px 20px rgba(168, 15, 46, 0.5);
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 59, 92, 0.6);
-        }
-
-        /* --- HALAMAN 2: DASHBOARD TRACKER --- */
+        /* Halaman 2: Dashboard */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr 1.8fr;
-            gap: 25px;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 20px;
         }
 
-        @media (max-width: 880px) {
+        @media (max-width: 800px) {
             .dashboard-grid, .analytics-grid { grid-template-columns: 1fr !important; }
-            .hero-title { font-size: 32px; }
+            .hero-title { font-size: 30px; }
+            .nav-links { gap: 4px; }
+            .nav-btn { padding: 5px 10px; font-size: 11px; }
         }
 
         .balance-card {
             background: var(--maroon-gradient);
-            border-radius: 18px;
-            padding: 22px;
+            border-radius: 16px;
+            padding: 20px;
             color: white;
             border: 1px solid var(--accent-crimson);
-            box-shadow: 0 10px 25px rgba(168, 15, 46, 0.4);
             margin-bottom: 20px;
         }
 
         .stats-mini {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 6px;
             background: rgba(0,0,0,0.35);
-            padding: 10px;
-            border-radius: 12px;
+            padding: 8px;
+            border-radius: 10px;
             text-align: center;
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
-        .stat-item p { font-size: 10px; color: var(--text-muted); }
-        .stat-item span { font-weight: 700; font-size: 12px; margin-top: 2px; display: block; }
+        .stat-item p { font-size: 9px; color: var(--text-muted); }
+        .stat-item span { font-weight: 700; font-size: 11px; margin-top: 2px; display: block; }
 
-        /* Limit Warning Box */
         .budget-limit-box {
             background: rgba(255, 159, 67, 0.1);
             border: 1px solid var(--warning-orange);
-            border-radius: 12px;
-            padding: 12px 15px;
-            margin-top: 15px;
-            font-size: 12px;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-top: 12px;
+            font-size: 11px;
         }
-
         .budget-limit-box.exceeded {
             background: rgba(255, 82, 82, 0.15);
             border-color: var(--expense-red);
@@ -258,33 +227,25 @@
 
         .progress-bar {
             width: 100%;
-            height: 8px;
+            height: 6px;
             background: var(--bg-main);
             border-radius: 10px;
             overflow: hidden;
-            margin-top: 6px;
+            margin-top: 5px;
         }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--warning-orange);
-            width: 0%;
-            transition: width 0.3s;
-        }
-
+        .progress-fill { height: 100%; background: var(--warning-orange); width: 0%; }
         .progress-fill.exceeded { background: var(--expense-red); }
 
-        /* Form Inputs */
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 5px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
         .form-control {
             width: 100%;
-            padding: 10px 12px;
+            padding: 9px 12px;
             background: var(--bg-main);
             border: 1px solid var(--glass-border);
             border-radius: 8px;
             color: white;
-            font-size: 13px;
+            font-size: 12px;
             outline: none;
         }
 
@@ -293,138 +254,81 @@
             background: var(--maroon-gradient);
             border: 1px solid var(--accent-crimson);
             color: white;
-            padding: 11px;
+            padding: 10px;
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 5px;
+            margin-top: 4px;
         }
 
-        /* Transaction List */
-        .tx-list { list-style: none; max-height: 420px; overflow-y: auto; }
+        .tx-list { list-style: none; max-height: 380px; overflow-y: auto; }
         .tx-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--bg-main);
             border: 1px solid var(--glass-border);
-            padding: 12px 15px;
-            border-radius: 10px;
+            padding: 10px 14px;
+            border-radius: 8px;
             margin-bottom: 8px;
         }
-
         .tx-amount.income { color: var(--income-green); font-weight: 700; }
         .tx-amount.expense { color: var(--expense-red); font-weight: 700; }
 
-        /* --- HALAMAN 3: ANALYTICS (GRAFIK) --- */
-        .analytics-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
+        /* Halaman 3: Analytics */
+        .analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .chart-container { position: relative; height: 260px; width: 100%; }
 
-        .chart-container {
-            position: relative;
-            height: 280px;
-            width: 100%;
-        }
-
-        /* --- HALAMAN 4: WISHLIST --- */
-        .wishlist-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .wish-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 18px;
-            position: relative;
-        }
-
-        .wish-card.bought {
-            border-color: var(--income-green);
-            opacity: 0.8;
-        }
-
-        .wish-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 10px;
-            font-weight: 700;
-        }
-
+        /* Halaman 4: Wishlist */
+        .wishlist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+        .wish-card { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 14px; padding: 15px; position: relative; }
+        .wish-card.bought { border-color: var(--income-green); opacity: 0.8; }
+        .wish-badge { position: absolute; top: 12px; right: 12px; font-size: 9px; padding: 2px 6px; border-radius: 8px; font-weight: 700; }
         .wish-badge.pending { background: rgba(255, 159, 67, 0.2); color: var(--warning-orange); }
         .wish-badge.done { background: rgba(0, 230, 118, 0.2); color: var(--income-green); }
-
-        .wish-btn {
-            width: 100%;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid var(--glass-border);
-            background: var(--bg-main);
-            color: white;
-            font-size: 12px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-weight: 600;
-        }
-
-        .wish-btn:hover { border-color: var(--accent-glow); color: var(--accent-glow); }
+        .wish-btn { width: 100%; padding: 7px; border-radius: 6px; border: 1px solid var(--glass-border); background: var(--bg-main); color: white; font-size: 11px; cursor: pointer; margin-top: 8px; font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <navbar>
+    <!-- Header & Navigasi -->
+    <header>
         <div class="logo">
             <i class="fa-solid fa-droplet"></i> Bloodline
         </div>
         <div class="nav-links">
-            <button class="nav-btn active" onclick="switchPage('home')"><i class="fa-solid fa-house"></i> Home</button>
-            <button class="nav-btn" onclick="switchPage('dashboard')"><i class="fa-solid fa-gauge"></i> Dashboard</button>
-            <button class="nav-btn" onclick="switchPage('analytics')"><i class="fa-solid fa-chart-pie"></i> Grafik</button>
-            <button class="nav-btn" onclick="switchPage('wishlist')"><i class="fa-solid fa-star"></i> Wishlist</button>
+            <button class="nav-btn active" onclick="changePage('home')">Home</button>
+            <button class="nav-btn" onclick="changePage('dashboard')">Dashboard</button>
+            <button class="nav-btn" onclick="changePage('analytics')">Grafik</button>
+            <button class="nav-btn" onclick="changePage('wishlist')">Wishlist</button>
         </div>
-    </navbar>
+    </header>
 
     <!-- ================= HALAMAN 1: HOME ================= -->
-    <div id="home" class="page active-page">
+    <section id="home" class="page-section active">
         <div class="container">
             <div class="hero-section">
-                <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Financial Command Center</div>
+                <div class="hero-badge">Financial Command Center</div>
                 <h1 class="hero-title">Kuasai Keuanganmu. <span>Wujudkan Semua Impian.</span></h1>
-                <p class="hero-subtitle">
+                <p style="color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 15px;">
                     Pantau pengeluaran, batasi pemborosan dengan Budget Limit, analisis statistik dengan Grafik, dan wujudkan daftar barang impianmu.
                 </p>
-
-                <!-- Quotes Keuangan Motivasi -->
-                <div class="quote-box" id="quote-display">
+                <div class="quote-box">
                     "<span id="quote-text">Jangan menabung apa yang tersisa setelah dibelanjakan, tapi belanjakan apa yang tersisa setelah menabung.</span>"
                 </div>
-
-                <button class="cta-btn" onclick="switchPage('dashboard')">
-                    Buka Dashboard <i class="fa-solid fa-arrow-right"></i>
-                </button>
+                <button class="cta-btn" onclick="changePage('dashboard')">Buka Dashboard Sekarang</button>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ================= HALAMAN 2: DASHBOARD ================= -->
-    <div id="dashboard" class="page">
+    <section id="dashboard" class="page-section">
         <div class="container">
             <div class="dashboard-grid">
-                <!-- Left Column -->
                 <div>
                     <div class="balance-card">
-                        <span style="font-size:11px; text-transform:uppercase; opacity:0.8;">Sisa Saldo Utama</span>
-                        <h2 id="total-balance" style="font-size:32px; font-weight:800; margin:5px 0 15px 0;">Rp 0</h2>
+                        <span style="font-size:10px; text-transform:uppercase; opacity:0.8;">Sisa Saldo Utama</span>
+                        <h2 id="total-balance" style="font-size:28px; font-weight:800; margin:4px 0 10px 0;">Rp 0</h2>
                         
                         <div class="stats-mini">
                             <div class="stat-item" style="color:var(--income-green);">
@@ -441,7 +345,6 @@
                             </div>
                         </div>
 
-                        <!-- Limit Pengeluaran Warning Box -->
                         <div class="budget-limit-box" id="limit-box">
                             <div style="display:flex; justify-content:space-between; align-items:center;">
                                 <span id="limit-text">Batas Pengeluaran: Rp 0</span>
@@ -450,14 +353,290 @@
                             <div class="progress-bar">
                                 <div class="progress-fill" id="limit-progress"></div>
                             </div>
-                            <span id="limit-status" style="font-size:10px; margin-top:4px; display:block; color:var(--text-muted);">Pengeluaran aman</span>
+                            <span id="limit-status" style="font-size:9px; margin-top:3px; display:block; color:var(--text-muted);">Aman</span>
                         </div>
                     </div>
 
-                    <!-- Form Tambah Transaksi -->
                     <div class="card">
-                        <h3 style="font-size:15px; margin-bottom:12px;">Tambah Transaksi</h3>
+                        <h3 style="font-size:14px; margin-bottom:10px;">Tambah Transaksi</h3>
                         <form id="tx-form">
                             <div class="form-group">
                                 <label>Keterangan</label>
-                                <input type="text" id="desc" class="form-control" placeholder="
+                                <input type="text" id="desc" class="form-control" placeholder="Contoh: Beli Kopi" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nominal (Rp)</label>
+                                <input type="number" id="amount" class="form-control" placeholder="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Kategori</label>
+                                <select id="category" class="form-control">
+                                    <option value="Makanan">Makanan & Minuman</option>
+                                    <option value="Transport">Transportasi</option>
+                                    <option value="Belanja">Belanja</option>
+                                    <option value="Hiburan">Hiburan</option>
+                                    <option value="Tagihan">Tagihan/Kebutuhan</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tipe Transaksi</label>
+                                <select id="type" class="form-control">
+                                    <option value="expense">Pengeluaran (-)</option>
+                                    <option value="income">Pemasukan (+)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="submit-btn">Simpan Transaksi</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card" style="height: 100%;">
+                        <h3 style="font-size:14px; margin-bottom:12px;">Riwayat Transaksi</h3>
+                        <ul id="tx-list" class="tx-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HALAMAN 3: ANALYTICS ================= -->
+    <section id="analytics" class="page-section">
+        <div class="container">
+            <h2 style="margin-bottom: 15px; font-size: 20px;">Analisis & Grafik Keuangan</h2>
+            <div class="analytics-grid">
+                <div class="card">
+                    <h3 style="font-size:14px; margin-bottom:12px;">Distribusi per Kategori</h3>
+                    <div class="chart-container"><canvas id="pieChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3 style="font-size:14px; margin-bottom:12px;">Pemasukan vs Pengeluaran</h3>
+                    <div class="chart-container"><canvas id="barChart"></canvas></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HALAMAN 4: WISHLIST ================= -->
+    <section id="wishlist" class="page-section">
+        <div class="container">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h2 style="font-size: 20px;">Daftar Impian (Wishlist)</h2>
+                <button class="cta-btn" style="padding:6px 14px; font-size:12px;" onclick="addWishlistItem()">Tambah Barang</button>
+            </div>
+            <div id="wishlist-container" class="wishlist-grid"></div>
+        </div>
+    </section>
+
+    <script>
+        // --- DATA & STATE ---
+        let transactions = JSON.parse(localStorage.getItem('bf_data_tx')) || [];
+        let budgetLimit = Number(localStorage.getItem('bf_data_limit')) || 1000000;
+        let wishlist = JSON.parse(localStorage.getItem('bf_data_wish')) || [
+            { id: 1, name: 'Sepatu Baru', price: 350000, bought: false },
+            { id: 2, name: 'Headphone', price: 500000, bought: true }
+        ];
+
+        const quotesList = [
+            "Jangan menabung apa yang tersisa setelah dibelanjakan, tapi belanjakan apa yang tersisa setelah menabung.",
+            "Kebebasan finansial bukan tentang memiliki banyak uang, tapi memiliki kendali atas waktu dan pilihanmu.",
+            "Pengeluaran kecil yang terus-menerus bisa menenggelamkan kapal yang besar.",
+            "Beli hanya barang yang kamu butuhkan, bukan sekadar apa yang kamu inginkan."
+        ];
+
+        document.getElementById('quote-text').innerText = quotesList[Math.floor(Math.random() * quotesList.length)];
+
+        // --- FUNGSI PINDAH HALAMAN (DIJAMIN BISA DIPENCET) ---
+        function changePage(pageId) {
+            // Sembunyikan semua halaman
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Hapus kelas active di semua tombol navigasi
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Tampilkan halaman yang dipilih
+            document.getElementById(pageId).classList.add('active');
+
+            // Tandai tombol aktif
+            event.target.classList.add('active');
+
+            // Render ulang grafik atau wishlist jika halamannya dibuka
+            if (pageId === 'analytics') renderCharts();
+            if (pageId === 'wishlist') renderWishlist();
+        }
+
+        function formatIDR(num) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
+        }
+
+        // --- DASHBOARD LOGIC ---
+        function updateDashboard() {
+            const income = transactions.filter(t => t.type === 'income').reduce((a, b) => a + Number(b.amount), 0);
+            const expense = transactions.filter(t => t.type === 'expense').reduce((a, b) => a + Number(b.amount), 0);
+            const balance = income - expense;
+
+            document.getElementById('total-balance').innerText = formatIDR(balance);
+            document.getElementById('total-income').innerText = '+' + formatIDR(income);
+            document.getElementById('total-expense').innerText = '-' + formatIDR(expense);
+
+            document.getElementById('limit-text').innerText = `Batas: ${formatIDR(budgetLimit)}`;
+            let limitPercent = budgetLimit > 0 ? (expense / budgetLimit) * 100 : 0;
+            const progressEl = document.getElementById('limit-progress');
+            const limitBox = document.getElementById('limit-box');
+            const statusEl = document.getElementById('limit-status');
+
+            progressEl.style.width = `${Math.min(limitPercent, 100)}%`;
+
+            if (expense > budgetLimit) {
+                limitBox.classList.add('exceeded');
+                progressEl.classList.add('exceeded');
+                statusEl.innerText = `⚠️ Melebihi limit sebesar ${formatIDR(expense - budgetLimit)}`;
+            } else {
+                limitBox.classList.remove('exceeded');
+                progressEl.classList.remove('exceeded');
+                statusEl.innerText = `Terpakai ${Math.round(limitPercent)}% dari batas bulanan.`;
+            }
+
+            renderTxList();
+        }
+
+        function renderTxList() {
+            const listEl = document.getElementById('tx-list');
+            listEl.innerHTML = '';
+
+            if (transactions.length === 0) {
+                listEl.innerHTML = '<li style="text-align:center; color:var(--text-muted); padding:20px 0; font-size:12px;">Belum ada riwayat transaksi.</li>';
+                return;
+            }
+
+            transactions.forEach(t => {
+                const isInc = t.type === 'income';
+                const li = document.createElement('li');
+                li.className = 'tx-item';
+                li.innerHTML = `
+                    <div>
+                        <h5 style="font-size:13px;">${t.desc} <small style="color:var(--text-muted); font-size:9px;">(${t.category})</small></h5>
+                        <span style="font-size:10px; color:var(--text-muted);">${t.date}</span>
+                    </div>
+                    <div class="tx-amount ${t.type}">
+                        ${isInc ? '+' : '-'} ${formatIDR(t.amount)}
+                        <button onclick="deleteTx(${t.id})" style="background:none; border:none; color:var(--text-muted); margin-left:8px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+                listEl.appendChild(li);
+            });
+        }
+
+        document.getElementById('tx-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const desc = document.getElementById('desc').value;
+            const amount = document.getElementById('amount').value;
+            const category = document.getElementById('category').value;
+            const type = document.getElementById('type').value;
+
+            transactions.unshift({
+                id: Date.now(),
+                desc, amount: Number(amount), category, type,
+                date: new Date().toLocaleDateString('id-ID', { day:'numeric', month:'short' })
+            });
+
+            localStorage.setItem('bf_data_tx', JSON.stringify(transactions));
+            updateDashboard();
+            document.getElementById('desc').value = '';
+            document.getElementById('amount').value = '';
+        });
+
+        function deleteTx(id) {
+            transactions = transactions.filter(t => t.id !== id);
+            localStorage.setItem('bf_data_tx', JSON.stringify(transactions));
+            updateDashboard();
+        }
+
+        function setBudgetLimit() {
+            const val = prompt('Masukkan batas maksimal pengeluaran bulanan (Rp):', budgetLimit);
+            if (val && !isNaN(val)) {
+                budgetLimit = Number(val);
+                localStorage.setItem('bf_data_limit', budgetLimit);
+                updateDashboard();
+            }
+        }
+
+        // --- CHARTS LOGIC ---
+        let pieInst = null, barInst = null;
+        function renderCharts() {
+            const cats = ['Makanan', 'Transport', 'Belanja', 'Hiburan', 'Tagihan', 'Lainnya'];
+            const catTotals = cats.map(c => transactions.filter(t => t.type === 'expense' && t.category === c).reduce((a, b) => a + Number(b.amount), 0));
+            const incTotal = transactions.filter(t => t.type === 'income').reduce((a, b) => a + Number(b.amount), 0);
+            const expTotal = transactions.filter(t => t.type === 'expense').reduce((a, b) => a + Number(b.amount), 0);
+
+            const ctxPie = document.getElementById('pieChart').getContext('2d');
+            if (pieInst) pieInst.destroy();
+            pieInst = new Chart(ctxPie, {
+                type: 'doughnut',
+                data: { labels: cats, datasets: [{ data: catTotals, backgroundColor: ['#ff5252', '#00b4d8', '#ff9f43', '#ff3b5c', '#a80f2e', '#718093'] }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#fff', boxWidth: 12 } } } }
+            });
+
+            const ctxBar = document.getElementById('barChart').getContext('2d');
+            if (barInst) barInst.destroy();
+            barInst = new Chart(ctxBar, {
+                type: 'bar',
+                data: { labels: ['Pemasukan', 'Pengeluaran'], datasets: [{ data: [incTotal, expTotal], backgroundColor: ['#00e676', '#ff5252'] }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#fff' } }, y: { ticks: { color: '#fff' } } } }
+            });
+        }
+
+        // --- WISHLIST LOGIC ---
+        function renderWishlist() {
+            const container = document.getElementById('wishlist-container');
+            container.innerHTML = '';
+
+            if (wishlist.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted); font-size:12px;">Belum ada barang impian.</p>';
+                return;
+            }
+
+            wishlist.forEach(w => {
+                const card = document.createElement('div');
+                card.className = `wish-card ${w.bought ? 'bought' : ''}`;
+                card.innerHTML = `
+                    <span class="wish-badge ${w.bought ? 'done' : 'pending'}">${w.bought ? 'TERBELI' : 'IMPIAN'}</span>
+                    <h4 style="font-size:14px; margin-bottom:4px;">${w.name}</h4>
+                    <p style="font-size:12px; color:var(--accent-glow); font-weight:700;">${formatIDR(w.price)}</p>
+                    <button class="wish-btn" onclick="toggleWish(${w.id})">${w.bought ? 'Batalkan' : 'Tandai Beli'}</button>
+                    <button onclick="deleteWish(${w.id})" style="background:none; border:none; color:var(--text-muted); font-size:10px; margin-top:6px; cursor:pointer; width:100%;">Hapus</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function addWishlistItem() {
+            const name = prompt('Nama barang impian:');
+            const price = prompt('Estimasi harga (Rp):');
+            if (name && price && !isNaN(price)) {
+                wishlist.push({ id: Date.now(), name, price: Number(price), bought: false });
+                localStorage.setItem('bf_data_wish', JSON.stringify(wishlist));
+                renderWishlist();
+            }
+        }
+
+        function toggleWish(id) {
+            wishlist = wishlist.map(w => w.id === id ? { ...w, bought: !w.bought } : w);
+            localStorage.setItem('bf_data_wish', JSON.stringify(wishlist));
+            renderWishlist();
+        }
+
+        function deleteWish(id) {
+            wishlist = wishlist.filter(w => w.id !== id);
+            localStorage.setItem('bf_data_wish', JSON.stringify(wishlist));
+            renderWishlist();
+        }
+
+        // Inisialisasi awal
+        updateDashboard();
+    </script>
+</body>
+</html>
