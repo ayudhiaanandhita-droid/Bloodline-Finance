@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WalletPulse - Domina Keuanganmu</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #0f0a0d;
+            --bg-card: #180f14;
+            --bg-card-hover: #24141d;
+            --primary-red: #ff2a5f;
+            --primary-red-hover: #e01f4f;
+            --crimson-gradient: linear-gradient(135deg, #ff2a5f 0%, #8a0026 100%);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 42, 95, 0.2);
+            --text-white: #ffffff;
+            --text-muted: #a0939d;
+            --income-green: #00e676;
+            --expense-red: #ff5252;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigasi Header */
+        navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(15, 10, 13, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-white);
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            box-shadow: 0 0 15px rgba(255, 42, 95, 0.4);
+        }
+
+        /* Container Halaman */
+        .page {
+            display: none;
+            padding-top: 100px;
+            min-height: 100vh;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HALAMAN 1: LANDING PAGE --- */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            background: rgba(255, 42, 95, 0.15);
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            background: var(--crimson-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 650px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            background: var(--crimson-gradient);
+            color: white;
+            border: none;
+            padding: 16px 36px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 42, 95, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 42, 95, 0.6);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 60px auto 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .feature-card i {
+            font-size: 28px;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* --- HALAMAN 2: DASHBOARD TRACKER --- */
+        .dashboard-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 850px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title { font-size: 36px; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Main Balance Card */
+        .balance-card {
+            background: var(--crimson-gradient);
+            border-radius: 20px;
+            padding: 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(255, 42, 95, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .balance-card h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .balance-card h2 {
+            font-size: 34px;
+            font-weight: 800;
+            margin: 10px 0 20px 0;
+        }
+
+        .stats-mini {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0,0,0,0.25);
+            padding: 12px 18px;
+            border-radius: 12px;
+        }
+
+        .stat-item p {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .stat-item span {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .stat-item.inc span { color: var(--income-green); }
+        .stat-item.exp span { color: var(--expense-red); }
+
+        /* Form Input Transaksi */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg-main);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-red);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-red-hover);
+        }
+
+        /* List Transaksi */
+        .transaction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tx-list {
+            list-style: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .tx-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-main);
+            border: 1px solid var(--glass-border);
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+        }
+
+        .tx-item:hover {
+            border-color: rgba(255, 42, 95, 0.4);
+            transform: translateX(3px);
+        }
+
+        .tx-details h5 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .tx-details span {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .tx-amount {
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tx-amount.income { color: var(--income-green); }
+        .tx-amount.expense { color: var(--expense-red); }
+
+        .del-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .del-btn:hover {
+            color: var(--expense-red);
+        }
+
+        .empty-tx {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 40px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <navbar>
+        <div class="logo">
+            <i class="fa-solid fa-fire"></i> WalletPulse
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" onclick="switchPage('home')">Home</button>
+            <button class="nav-btn" onclick="switchPage('dashboard')">Dashboard</button>
+        </div>
+    </navbar>
+
+    <!-- HALAMAN 1: LANDING PAGE -->
+    <div id="home" class="page active-page">
+        <div class="hero-section">
+            <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Control Your Capital</div>
+            <h1 class="hero-title">Berhenti Kehilangan Uang. <span>Kuasai Pengeluaranmu.</span></h1>
+            <p class="hero-subtitle">
+                Pantau setiap rupiah yang masuk dan keluar secara real-time. Didesain cepat, tangguh, dan serba otomatis tanpa kerumitan.
+            </p>
+            <button class="cta-btn" onclick="switchPage('dashboard')">
+                Mulai Catat Sekarang <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Real-time Stats</h3>
+                <p>Kondisi saldo dan statistik transaksi diperbarui secara instan tanpa tunda.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Aman & Privat</h3>
+                <p>Data keuangan disimpan langsung di browser milikmu. Bebas khawatir tersadap.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3>Desain Badass</h3>
+                <p>Tampilan modern serba gelap khas dashboard profesional yang nyaman di mata.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HALAMAN 2: DASHBOARD TRACKER -->
+    <div id="dashboard" class="page">
+        <div class="dashboard-container">
+            
+            <div class="dashboard-grid">
+                <!-- Kolom Kiri: Ringkasan & Form -->
+                <div class="left-col">
+                    <!-- Balance Box -->
+                    <div class="balance-card">
+                        <h4>Total Saldo</h4>
+                        <h2 id="total-balance">Rp 0</h2>
+                        <div class="stats-mini">
+                            <div class="stat-item inc">
+                                <p>Pemasukan</p>
+                                <span id="total-income">+Rp 0</span>
+                            </div>
+                            <div class="stat-item exp">
+                                <p>Pengeluaran</p>
+                                <span id="total-expense">-Rp 0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Tambah Transaksi -->
+                    <div class="card">
+                        <h3 style="margin-bottom: 15px; font-size: 16px;">Tambah Transaksi</h3>
+                        <form id="tx-form">
+                            <div class="form-group">
+                                <label>Keterangan</label>
+                                <input type="text" id="desc" class="form-control" placeholder="Contoh: Honor, Beli Kopi" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nominal (Rp)</label>
+                                <input type="number" id="amount" class="form-control" placeholder="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Tipe Transaksi</label>
+                                <select id="type" class="form-control">
+                                    <option value="income">Pemasukan (+)</option>
+                                    <option value="expense">Pengeluaran (-)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="submit-btn"><i class="fa-solid fa-plus"></i> Simpan Transaksi</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Riwayat Transaksi -->
+                <div class="right-col">
+                    <div class="card" style="min-height: 100%;">
+                        <div class="transaction-header">
+                            <h3>Riwayat Keuangan</h3>
+                            <span style="font-size: 12px; color: var(--text-muted);" id="tx-count">0 Transaksi</span>
+                        </div>
+                        <ul id="tx-list" class="tx-list">
+                            <!-- Items will be generated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- Navigasi Halaman ---
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Highlight tombol navbar
+            if(pageId === 'home') {
+                document.querySelectorAll('.nav-btn')[0].classList.add('active');
+            } else {
+                document.querySelectorAll('.nav-btn')[1].classList.add('active');
+            }
+        }
+
+        // --- Logika App Tracker ---
+        const totalBalanceEl = document.getElementById('total-balance');
+        const totalIncomeEl = document.getElementById('total-income');
+        const totalExpenseEl = document.getElementById('total-expense');
+        const txListEl = document.getElementById('tx-list');
+        const txCountEl = document.getElementById('tx-count');
+        const form = document.getElementById('tx-form');
+
+        let transactions = JSON.parse(localStorage.getItem('walletpulse_v2_data')) || [];
+
+        function formatIDR(num) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
+        }
+
+        function updateSummary() {
+            const income = transactions
+                .filter(t => t.type === 'income')
+                .reduce((acc, t) => acc + Number(t.amount), 0);
+
+            const expense = transactions
+                .filter(t => t.type === 'expense')
+                .reduce((acc, t) => acc + Number(t.amount), 0);
+
+            const balance = income - expense;
+
+            totalBalanceEl.innerText = formatIDR(balance);
+            totalIncomeEl.innerText = '+' + formatIDR(income);
+            totalExpenseEl.innerText = '-' + formatIDR(expense);
+            txCountEl.innerText = `${transactions.length} Transaksi`;
+        }
+
+        function renderList() {
+            txListEl.innerHTML = '';
+
+            if (transactions.length === 0) {
+                txListEl.innerHTML = '<div class="empty-tx"><i class="fa-solid fa-receipt" style="font-size:24px; margin-bottom:8px;"></i><br>Belum ada riwayat pengeluaran atau pemasukan.</div>';
+                return;
+            }
+
+            transactions.forEach(t => {
+                const isIncome = t.type === 'income';
+                const sign = isIncome ? '+' : '-';
+                
+                const li = document.createElement('li');
+                li.className = 'tx-item';
+                li.innerHTML = `
+                    <div class="tx-details">
+                        <h5>${t.desc}</h5>
+                        <span>${t.date}</span>
+                    </div>
+                    <div class="tx-amount ${t.type}">
+                        ${sign} ${formatIDR(t.amount)}
+                        <button class="del-btn" onclick="deleteTx(${t.id})"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+                txListEl.appendChild(li);
+            });
+        }
+
+        function addTransaction(e) {
+            e.preventDefault();
+
+            const desc = document.getElementById('desc').value;
+            const amount = document.getElementById('amount').value;
+            const type = document.getElementById('type').value;
+
+            const newTx = {
+                id: Date.now(),
+                desc: desc,
+                amount: Number(amount),
+                type: type,
+                date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
+            };
+
+            transactions.unshift(newTx);
+            saveAndRefresh();
+
+            document.getElementById('desc').value = '';
+            document.getElementById('amount').value = '';
+        }
+
+        function deleteTx(id) {
+            transactions = transactions.filter(t => t.id !== id);
+            saveAndRefresh();
+        }
+
+        function saveAndRefresh() {
+            localStorage.setItem('walletpulse_v2_data', JSON.stringify(transactions));
+            updateSummary();
+            renderList();
+        }
+
+        form.addEventListener('submit', addTransaction);
+
+        // Inisialisasi awal
+        updateSummary();
+        renderList();
+    </script>
+</body>
+</html>
